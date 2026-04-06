@@ -3,19 +3,19 @@ sudo gedit /etc/systemd/system/startup_robot.service
 
 
 	[Unit]
-	Description=Start White m4 using jetson ARK
+	Description=Start White m4 using jetson ARK ROS2
 	After=network.target
 	Wants=network.target
 
 	[Service]
 	Type=oneshot
 	RemainAfterExit=yes
-	ExecStart=/bin/bash /home/jetson/whiteM4/m4-firmware/startup.sh
-	WorkingDirectory=/home/jetson/whiteM4/m4-firmware/
+	ExecStart=/bin/bash /home/jetson/whiteM4_ros2/m4-firmware-ros2/startup.sh
+	WorkingDirectory=/home/jetson/whiteM4_ros2/m4-firmware-ros2/
 	User=jetson
 	Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-	StandardOutput=append:/home/jetson/whiteM4/m4-firmware/startup_log/startup_robot.log
-	StandardError=append:/home/jetson/whiteM4/m4-firmware/startup_log/startup_robot.log
+	StandardOutput=append:/home/jetson/whiteM4_ros2/m4-firmware-ros2/startup_log/startup_robot.log
+	StandardError=append:/home/jetson/whiteM4_ros2/m4-firmware-ros2/startup_log/startup_robot.log
 	TimeoutStartSec=120
 
 	[Install]
