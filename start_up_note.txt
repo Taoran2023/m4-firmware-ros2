@@ -1,0 +1,34 @@
+#find this service
+sudo gedit /etc/systemd/system/startup_robot.service
+
+
+	[Unit]
+	Description=Start White m4 using jetson ARK
+	After=network.target
+	Wants=network.target
+
+	[Service]
+	Type=oneshot
+	RemainAfterExit=yes
+	ExecStart=/bin/bash /home/jetson/whiteM4/m4-firmware/startup.sh
+	WorkingDirectory=/home/jetson/whiteM4/m4-firmware/
+	User=jetson
+	Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+	StandardOutput=append:/home/jetson/whiteM4/m4-firmware/startup_log/startup_robot.log
+	StandardError=append:/home/jetson/whiteM4/m4-firmware/startup_log/startup_robot.log
+	TimeoutStartSec=120
+
+	[Install]
+	WantedBy=multi-user.target
+	
+	
+#start service
+sudo systemctl daemon-reload
+sudo systemctl enable startup_robot.service
+
+
+#reload service
+sudo systemctl restart start_robot.service
+
+#disable service
+sudo systemctl disable start_robot.service

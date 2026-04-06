@@ -1,0 +1,9 @@
+# Udev rules to set up USB devices
+# Copied to /etc/rules.d by set_udev_rules.sh
+
+#U2D2
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6014", SYMLINK+="U2D2"
+ACTION=="add", SUBSYSTEM=="usb-serial", DRIVER=="ftdi_sio", ATTR{latency_timer}="1"
+
+#Pixhawk
+ACTION=="add", ATTRS{idVendor}=="2dae", ATTRS{idProduct}=="1058", SYMLINK+="pixhawk"

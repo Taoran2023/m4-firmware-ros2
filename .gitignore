@@ -1,0 +1,23 @@
+# colcon build artifacts
+/build/
+/install/
+/log/
+
+# workspace artifacts
+m4_home/m4_ws/build/
+m4_home/m4_ws/install/
+m4_home/m4_ws/log/
+
+# logs
+startup_log/*.log
+
+# python
+__pycache__/
+*.pyc
+
+# editor
+.vscode/
+.idea/
+
+# system
+.DS_Store

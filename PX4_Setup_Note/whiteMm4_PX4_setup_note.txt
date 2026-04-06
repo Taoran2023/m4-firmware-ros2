@@ -1,0 +1,74 @@
+
+This note is for using Jetson ARK and QGC set up PX4 configs.
+recommands to use With old(<5.0.4) version QGC to complete setting, new version missing a lot of UI properties.
+read through all this file before start changing things, Use UI as much as possiable. recommand modify params all at once, otherwise you need to reboot mutiple time to save configs.
+
+General:
+
+RC calibration:
+Follow QGC UI instructions
+Ask your drone pilot for trigger switch preference
+Switch mapping, Reza's preference, Futaba controller:
+
+Airframe config:
+M4 requires H-type motor geometry
+PX4 built-in H airframe fails pre-arm system health check on Jetson ARK
+(likely related to power / battery assumptions in that airframe)
+
+Alrernative solution(tested):
+1. Set Airframe to X configuration, General
+2. config motor and ESC be equivalent to H geometry. Keep reading in ESC config part
+   (Note: the only difference between X and H is motor spin direction and numbering)
+
+Sensor Calibration
+Set param SENS_BOARD_ROT to represent board mounting
+(current setting is Roll 180, Yaw 270, suppose to be same as orientation)
+	set params:
+	 SENS_BOARD_ROT
+Enable compass
+	set params:
+	 SYS_HAS_MAG 1
+Set Orientation to represent board mounting
+(current setting is Roll 180, Yaw 270,suppose to be same as SENS_BOARD_ROT)
+and using UI to finish all setting
+
+
+ESC config
+1. Program ESC to DSHOT mode
+2. config motor 
+	With old(<5.0.4) version QGC
+	 config Acutuator with UI, select Dshot as same number
+	With new version:
+	 params:
+	 	PWM_AUX_TIM0  DShot150 (same as ESC Dshot setting)
+	 	PWM_AUX_FUNC1 motor1
+	 	PWM_AUX_FUNC2 motor2
+	 	PWM_AUX_FUNC3 motor3
+	 	PWM_AUX_FUNC4 motor4
+
+3. check motor and rotor mapping table, number -> postion
+4. revert motor spin direction,
+	with old(<5.0.4) version QGC:
+	 Set with UI Actuator
+	 
+		{3}   {1}
+		  \   /
+		    O
+		  /   \
+		{2}   {4}
+		1,2 CCW
+		3,4 CW
+		
+	With new version:
+	 Set params:
+	 	CA_ROTOR
+	 	(more than one params, related to this, needs furter confirm, use ord version QGC for now)
+	 	 
+	 
+5. cancel PWM out put revert:
+   params:
+   	PWM_AUX_REV  all 0
+   (Note: by changing X frame defalt configuration, changing motor spin direction may automatically introduce output reversal)
+   
+   
+   

@@ -1,0 +1,7 @@
+[submodule "m4_home/m4_ws/src/m4-firmware"]
+	path = m4_home/m4_ws/src/m4-firmware
+	url = git@github.com:Taoran2023/m4-firmware.git
+	branch = ros2
+[submodule "m4_home/m4_ws/src/px4_msgs"]
+	path = m4_home/m4_ws/src/px4_msgs
+	url = git@github.com:Taoran2023/px4_msgs.git
