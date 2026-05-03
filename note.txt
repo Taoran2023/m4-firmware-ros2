@@ -1,0 +1,21 @@
+# 主机改 submodule
+cd ~/m4_ws/whiteM4_ROS2/m4-firmware-ros2
+git pull --rebase origin master
+git submodule update --init --recursive
+cd m4_home/m4_ws/src/m4-firmware
+git fetch origin
+git switch ros2 || git switch -c ros2 --track origin/ros2
+git pull --rebase origin ros2
+# 修改代码
+git add .
+git commit -m "change"
+git push origin ros2
+cd ~/m4_ws/whiteM4_ROS2/m4-firmware-ros2
+git add m4_home/m4_ws/src/m4-firmware
+git commit -m "update submodule pointer"
+git push origin master
+
+# Jetson 同步
+cd ~/whiteM4_ros2/m4-firmware-ros2
+git pull --rebase origin master
+git submodule update --init --recursive
