@@ -6,6 +6,7 @@ cd m4_home/m4_ws/src/m4-firmware
 git fetch origin
 git switch ros2 || git switch -c ros2 --track origin/ros2
 git pull --rebase origin ros2
+
 # 修改代码
 git add .
 git commit -m "change"
