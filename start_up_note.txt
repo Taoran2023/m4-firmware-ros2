@@ -1,6 +1,8 @@
 #find this service
 sudo gedit /etc/systemd/system/startup_robot.service
+sudo nano /etc/systemd/system/startup_robot.service
 
+### standard startup
 
 	[Unit]
 	Description=Start White m4 using jetson ARK ROS2
@@ -22,6 +24,7 @@ sudo gedit /etc/systemd/system/startup_robot.service
 	WantedBy=multi-user.target
 	
 	
+
 #start service
 sudo systemctl daemon-reload
 sudo systemctl enable startup_robot.service
@@ -32,3 +35,39 @@ sudo systemctl restart start_robot.service
 
 #disable service
 sudo systemctl disable start_robot.service
+
+
+
+### working with laptop：
+
+	[Unit]
+	Description=Start White M4 using Jetson ARK ROS2
+	After=network-online.target
+	Wants=network-online.target
+
+	[Service]
+	Type=oneshot
+	RemainAfterExit=yes
+	User=jetson
+	WorkingDirectory=/home/jetson/whiteM4_ros2/m4-firmware-ros2/
+
+	Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+	Environment="ROS_DOMAIN_ID=0"
+	Environment="ROS_LOCALHOST_ONLY=0"
+	Environment="RMW_IMPLEMENTATION=rmw_cyclonedds_cpp"
+
+	# wait for network card, Jetson hotspot
+	ExecStartPre=/bin/bash -c 'while ! ip link show wlP1p1s0 > /dev/null 2>&1; do sleep 1; done'
+
+	# sleep time
+	ExecStartPre=/bin/sleep 5
+
+	ExecStart=/bin/bash /home/jetson/whiteM4_ros2/m4-firmware-ros2/startup.sh
+
+	StandardOutput=append:/home/jetson/whiteM4_ros2/m4-firmware-ros2/startup_log/startup_robot.log
+	StandardError=append:/home/jetson/whiteM4_ros2/m4-firmware-ros2/startup_log/startup_robot.log
+
+	TimeoutStartSec=120
+
+	[Install]
+	WantedBy=multi-user.target
