@@ -3,15 +3,15 @@
 ROS2 firmware for the **M4 morphing robot** — a platform capable of switching between wheeled ground driving, legged postures, and quadcopter flight.  
 Runs on **Jetson Orin** + **Cube Orange / PX4** or  **Jetson_ARK / Holybro** , communicating via DDS (no MAVROS required).
 
+<p align="center">
+  <img src="doc/white_m4.jpg" alt="white_m4" width="400"/>
+</p>
 
 
 > Detailed documentation: [`doc/`](doc/)  
 > Full setup guide: [`doc/Robot_Setup_Note/whitem4_jetson_setup_note.txt`](doc/Robot_Setup_Note/whitem4_jetson_setup_note.txt)  
 > Controller structure & flow: [`doc/firmware_structure/README.md`](doc/firmware_structure/README.md)
 
-<p align="center">
-  <img src="doc/white_m4.jpg" alt="white_m4" width="800"/>
-</p>
 
 ---
 
