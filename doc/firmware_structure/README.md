@@ -41,7 +41,9 @@
    12x Dynamixel Servos         Cube Orange / PX4
    (8 joints + 4 wheels)        (Flight controller + ESC + IMU)
 ```
-
+<p align="center">
+  <img src="firmware_structure.png" alt="Firmware Structure" width="800"/>
+</p>
 ---
 
 ## 2. Core Components

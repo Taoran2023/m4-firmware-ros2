@@ -1,17 +1,26 @@
 # M4 Firmware (ROS2)
 
-ROS2 firmware for the **M4 morphing quadruped robot** — a platform capable of switching between wheeled ground driving, legged postures, and quadcopter flight.  
+ROS2 firmware for the **M4 morphing robot** — a platform capable of switching between wheeled ground driving, legged postures, and quadcopter flight.  
 Runs on **Jetson Orin** + **Cube Orange / PX4** or  **Jetson_ARK / Holybro** , communicating via DDS (no MAVROS required).
+
+
 
 > Detailed documentation: [`doc/`](doc/)  
 > Full setup guide: [`doc/Robot_Setup_Note/whitem4_jetson_setup_note.txt`](doc/Robot_Setup_Note/whitem4_jetson_setup_note.txt)  
 > Controller structure & flow: [`doc/firmware_structure/README.md`](doc/firmware_structure/README.md)
 
+<p align="center">
+  <img src="doc/white_m4.jpg" alt="white_m4" width="800"/>
+</p>
+
 ---
 
-## Quick Start
+## Quick Start（On Jetson）
 
-### 1. Clone
+### 0. assemable the robot
+
+### 1. Clone repo
+！！ follow doc/Robot_Setup_Note/whitem4_jetson_setup_note.txt for details ！！
 
 ```bash
 git clone --recursive git@github.com:Taoran2023/m4-firmware-ros2.git whiteM4_ros2/m4-firmware-ros2
@@ -28,7 +37,7 @@ cd ~/whiteM4_ros2/m4-firmware-ros2
 ```bash
 cd m4_home/m4_ws
 source /opt/ros/humble/setup.bash
-colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
+colcon build --symlink-install
 ```
 
 ### 3. Run
@@ -44,6 +53,7 @@ tmux attach -t control
 ```
 
 ### 4. Sync (Git Workflow)
+working on laptop, build onn Jetson
 
 ```bash
 ./host_sync.sh              # pull latest + update submodule
