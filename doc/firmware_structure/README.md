@@ -364,8 +364,15 @@ At most one handler fires per tick (break after first match).
 |---|---|
 | Ground mode does not auto-stop on odom loss | By design — differential drive is open-loop. The upstream planner stops publishing `/auto/cmd_vel`; cmd_vel timeout (0.5 s) then stops the robot. |
 | DESCENDING does not auto-recover | Prevents unexpected mode switches. Operator must confirm odom is healthy and re-send `mode_cmd=1`. |
-| 5S ARM delay after G2A transform | Prevents ARM failure caused by IMU bias drift or high CPU load immediately after joint motion. Configurable via `uav_arm_wait_s`. |
+| 5 s ARM delay after G2A transform | Prevents ARM failure caused by IMU bias drift or high CPU load immediately after joint motion. Configurable via `uav_arm_wait_s`. |
 | PRE_ARM sends no position setpoint | Only the heartbeat is sent; PX4 accepts the offboard stream but does not execute position control until TRACKING. |
 | MANUAL AERIAL_ARM safety interlock | If `m4_configuration != UAV`, a DISARM command is sent to PX4 every tick — independent of AUTO mode state. |
 
 ---
+
+## 12. Roadmap
+
+- [ ] Ground bimodel controller integration (waypoint tracking → publish `/auto/cmd_vel`)
+- [ ] PX4 aerial tuning (position and velocity loop gains)
+- [ ] DESCENDING mode flight test and descent rate calibration
+- [ ] FastLIO z-axis drift characterisation (must be resolved before aerial mode)
