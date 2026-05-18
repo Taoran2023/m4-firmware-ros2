@@ -9,6 +9,7 @@ find_package(geometry_msgs REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/M4BimodelPose.msg"
   "msg/M4ModeCmd.msg"
+  "msg/M4ModeStatus.msg"
   DEPENDENCIES std_msgs geometry_msgs
 )
 
