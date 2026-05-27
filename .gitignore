@@ -9,7 +9,7 @@ m4_home/m4_ws/install/
 m4_home/m4_ws/log/
 
 # logs
-startup_log/*.log
+# startup_log/*.log
 
 # python
 __pycache__/
