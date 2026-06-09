@@ -190,7 +190,7 @@ PWM_AUX_REV4 = 0
 | Parameter | Purpose | Value |
 |--------|--------|------|
 | SENS_BOARD_ROT | Board mounting orientation | Roll 180, Yaw 270 |
-| SYS_HAS_MAG | Enable compass | 1 |
+| SYS_HAS_MAG | Enable compass | 0 |
 
 ---
 
