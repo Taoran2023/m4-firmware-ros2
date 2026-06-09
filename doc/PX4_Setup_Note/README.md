@@ -70,9 +70,9 @@ This must match the physical mounting of the flight controller.
 
 ### Compass
 
-Enable magnetometer:
+Disable magnetometer， while transforming, the Dynamixel current will affect calibration:
 ```bash
-SYS_HAS_MAG = 1
+SYS_HAS_MAG = 0
 ```
 
 ---
