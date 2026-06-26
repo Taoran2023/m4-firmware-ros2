@@ -10,6 +10,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/M4BimodelPose.msg"
   "msg/M4ModeCmd.msg"
   "msg/M4ModeStatus.msg"
+  "msg/M4TrajectorySetpoint.msg"
   DEPENDENCIES std_msgs geometry_msgs
 )
 
