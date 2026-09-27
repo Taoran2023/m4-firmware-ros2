@@ -1,10 +1,10 @@
 [submodule "m4_home/m4_ws/src/m4-firmware"]
 	path = m4_home/m4_ws/src/m4-firmware
-	url = git@github.com:Taoran2023/m4-firmware.git
+	url = git@github.com:M4-team-at-Caltech/m4-firmware.git
 	branch = ros2
 [submodule "m4_home/m4_ws/src/px4_msgs"]
 	path = m4_home/m4_ws/src/px4_msgs
-	url = git@github.com:Taoran2023/px4_msgs.git
+	url = git@github.com:M4-team-at-Caltech/px4_msgs.git
 [submodule "m4_home/m4_ws/src/custom_msgs"]
 	path = m4_home/m4_ws/src/custom_msgs
 	url = git@github.com:M4-team-at-Caltech/custom_msgs.git
